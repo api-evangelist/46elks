@@ -1,0 +1,117 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: 46elks
+providerId: 46elks
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: true
+tags:
+- CPaaS
+- SMS
+- MMS
+- Voice
+- Phone Numbers
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of 46elks spend. 46elks bills usage-based per-message-part rates for
+  SMS, per-message rates for MMS, per-minute rates for inbound/outbound voice and
+  SIP/WebSocket forwarding, and recurring monthly rents for virtual phone numbers,
+  extra call channels, and user accounts. Billing is prepaid against an account
+  balance in the account currency (EUR headline).
+notes: >-
+  Per-destination SMS and voice rates vary; verify against the 46elks pricing page
+  during reconciliation. Costs in API responses are expressed in 10,000ths of the
+  account currency.
+sources:
+- https://46elks.com/pricing
+- https://46elks.com/docs
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: 46elks
+serviceCategory: Communications
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Prepaid
+  billingCurrency: EUR
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: 46elks CPaaS
+  ServiceCategory: Communications
+  ProviderName: 46elks
+  PublisherName: 46elks
+  InvoiceIssuerName: 46elks
+  BillingCurrency: EUR
+  ChargeCategory: Usage
+  PricingCategory: Usage-Based
+meters:
+- name: sms_parts
+  description: Outbound SMS message parts, billed per part per destination.
+  unit: message_parts
+  aggregation: sum
+  dimensions:
+  - account
+  - destination
+- name: inbound_sms
+  description: Inbound SMS received on rented numbers.
+  unit: messages
+  aggregation: sum
+  dimensions:
+  - account
+  - number
+- name: mms_messages
+  description: MMS picture messages sent.
+  unit: messages
+  aggregation: sum
+  dimensions:
+  - account
+  - destination
+- name: voice_minutes
+  description: Inbound and outbound voice call minutes, billed per minute per destination.
+  unit: minutes
+  aggregation: sum
+  dimensions:
+  - account
+  - destination
+- name: forwarding_minutes
+  description: SIP and WebSocket call-forwarding minutes.
+  unit: minutes
+  aggregation: sum
+  dimensions:
+  - account
+  - transport
+- name: number_rental
+  description: Monthly rental of virtual phone numbers.
+  unit: numbers
+  aggregation: sum
+  dimensions:
+  - account
+  - country
+- name: channel_rental
+  description: Monthly rental of extra call channels and user accounts.
+  unit: channels
+  aggregation: sum
+  dimensions:
+  - account
+principles:
+- name: Visibility
+  description: Inspect per-message and per-call cost fields (in 10,000ths of currency) via the /sms, /mms, and /calls history endpoints.
+- name: Allocation
+  description: Use subaccounts and per-number tagging to map spend to teams, apps, or customers.
+- name: Optimization
+  description: Collapse multi-part messages, prefer GSM over UTF-16 to reduce parts, release idle numbers, and choose SIP forwarding where cheaper.
+- name: Accountability
+  description: Monitor the prepaid balance and set alerts; review monthly SMS/voice/number spend against budget.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

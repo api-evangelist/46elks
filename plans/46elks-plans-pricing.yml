@@ -1,0 +1,154 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: 46elks
+providerId: 46elks
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: true
+tags:
+- CPaaS
+- SMS
+- MMS
+- Voice
+- Phone Numbers
+- Plans
+description: >-
+  46elks uses a transparent pay-as-you-go model with no monthly platform fee for
+  API access. SMS is billed per message part, voice calls per minute, and virtual
+  phone numbers per month. There are no Free / Developer / Enterprise tiers; you
+  top up a balance and pay for the usage you incur. Prices below are representative
+  headline rates in EUR excluding VAT; some destinations, inbound routing, and MMS
+  are quoted on request.
+notes: >-
+  Rates vary by destination country and change over time - verify the current
+  numbers and per-country rates on the 46elks pricing page before relying on them.
+sources:
+- https://46elks.com/pricing
+- https://46elks.com/docs
+plans:
+- id: 46elks-pay-as-you-go
+  name: Pay-as-you-go
+  type: usage
+  description: >-
+    Usage-metered messaging and voice with no monthly minimum and no API access
+    fee; you prepay a balance and are charged per SMS part, per call minute, and
+    per rented number.
+  entries:
+  - label: Outbound SMS
+    name: outbound_sms
+    type: usage
+    metric: message_parts
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: from EUR 0.02 per message part (varies by destination)
+    userMultiplied: false
+  - label: Inbound SMS
+    name: inbound_sms
+    type: usage
+    metric: messages
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contact support (varies by number and country)
+    userMultiplied: false
+  - label: Outbound / Inbound Voice
+    name: voice_minutes
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: from EUR 0.02 per minute (landline and mobile, varies by destination)
+    userMultiplied: false
+  - label: External SIP Forwarding
+    name: sip_forwarding
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: from EUR 0.01 per minute
+    userMultiplied: false
+  - label: WebSocket Call Forwarding
+    name: websocket_forwarding
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: from EUR 0.015 per minute
+    userMultiplied: false
+  - label: MMS
+    name: mms
+    type: usage
+    metric: messages
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contact support
+    userMultiplied: false
+  elements:
+  - name: SMS
+  - name: MMS
+  - name: Voice Calls
+  - name: Media / Recordings
+- id: 46elks-phone-numbers
+  name: Virtual Phone Numbers
+  type: subscription
+  description: >-
+    Monthly rental of virtual phone numbers with SMS and/or voice capability.
+  entries:
+  - label: Landline Number
+    name: landline_number
+    type: recurring
+    metric: numbers
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: EUR 3 per number per month
+    userMultiplied: false
+  - label: Mobile Number
+    name: mobile_number
+    type: recurring
+    metric: numbers
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contact support (varies by country)
+    userMultiplied: false
+  - label: Extra Call Channel
+    name: extra_channel
+    type: recurring
+    metric: channels
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: EUR 3 per channel per month
+    userMultiplied: false
+  - label: User Account (SIP/WebRTC)
+    name: user_account
+    type: recurring
+    metric: accounts
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: EUR 3 per account per month
+    userMultiplied: false
+  elements:
+  - name: Phone Numbers
+  - name: Call Routing
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

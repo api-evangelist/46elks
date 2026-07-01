@@ -1,0 +1,80 @@
+aid: 46elks
+name: 46elks
+review:
+  question: Does 46elks expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-01'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    46elks is event-driven at the edges via HTTP webhooks (delivery reports,
+    inbound SMS/MMS, inbound call routing, call-action callbacks), but its
+    developer-facing programmable surface is a synchronous HTTP REST API. No
+    AsyncAPI document was authored because the notifications are ordinary
+    HTTP POST callbacks the developer receives, not a subscribe-style channel
+    the platform documents as a messaging protocol.
+findings:
+  summary: |
+    46elks does not publish a documented public WebSocket API for developers to
+    call. The programmable interface is a simple HTTPS REST API under
+    https://api.46elks.com/a1 authenticated with HTTP Basic auth (API username
+    and API password). Asynchronous behavior is delivered as HTTP webhooks:
+    the whendelivered SMS delivery-report callback, inbound sms_url callbacks on
+    rented numbers, and voice_start / next / whenhangup call-action callbacks.
+    46elks does offer WebSocket *media forwarding* for live call audio (billed
+    per minute), but that is an audio transport for a bridged call, not a
+    documented request/response API surface, so it is not modeled as an API here.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.46elks.com/a1
+      documented: true
+    - protocol: Webhook
+      scheme: https
+      note: Outbound HTTP POST callbacks to developer URLs for delivery reports, inbound messages, and call actions. Not a WebSocket API.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: partial
+      note: WebSocket exists only as a live call-audio forwarding transport (per-minute billed), not as a documented programmable REST-equivalent API.
+  endpointsConfirmedRest:
+    - POST   https://api.46elks.com/a1/sms
+    - GET    https://api.46elks.com/a1/sms
+    - GET    https://api.46elks.com/a1/sms/{id}
+    - POST   https://api.46elks.com/a1/mms
+    - GET    https://api.46elks.com/a1/mms
+    - GET    https://api.46elks.com/a1/mms/{id}
+    - POST   https://api.46elks.com/a1/calls
+    - GET    https://api.46elks.com/a1/calls
+    - GET    https://api.46elks.com/a1/calls/{id}
+    - POST   https://api.46elks.com/a1/numbers
+    - GET    https://api.46elks.com/a1/numbers
+    - POST   https://api.46elks.com/a1/numbers/{id}
+    - DELETE https://api.46elks.com/a1/numbers/{id}
+    - GET    https://api.46elks.com/a1/recordings
+    - GET    https://api.46elks.com/a1/images
+sources:
+  - url: https://46elks.com/docs
+    type: Documentation
+    note: Overview lists REST base URL https://api.46elks.com/a1 with HTTP Basic auth.
+  - url: https://46elks.com/docs/send-sms
+    type: Documentation
+    note: POST /sms with from/to/message and whendelivered delivery-report webhook.
+  - url: https://46elks.com/docs/make-call
+    type: Documentation
+    note: POST /calls with voice_start call actions (connect, play, ivr, record, hangup) delivered via HTTP webhooks.
+  - url: https://46elks.com/pricing
+    type: Pricing
+    note: Pay-as-you-go per-SMS-part and per-minute rates; monthly number rental.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No documented public WebSocket REST-equivalent API exists. The catalog entry
+    models the six REST surfaces (SMS, MMS, Voice Calls, Phone Numbers, Media,
+    Verification/OTP) with a single representative OpenAPI. Webhook callbacks are
+    described in prose within each surface's description rather than as a separate
+    AsyncAPI artifact.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

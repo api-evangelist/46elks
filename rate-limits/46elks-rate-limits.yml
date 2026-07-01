@@ -1,0 +1,62 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: 46elks
+providerId: 46elks
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: false
+tags:
+- CPaaS
+- SMS
+- MMS
+- Voice
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  46elks does not publish fixed public request-per-second quotas for its HTTP API.
+  In practice throughput is governed by carrier and operator constraints on SMS and
+  voice delivery, by your prepaid account balance, and by anti-abuse controls. High
+  volume senders are onboarded and rate-shaped with 46elks support. Specific numeric
+  limits are not reconciled in this artifact.
+notes: >-
+  Confirm concurrency and send-rate expectations directly with 46elks support when
+  planning bulk SMS or high call concurrency; limits are account- and destination-
+  specific rather than a single documented number.
+sources:
+- https://46elks.com/docs
+- https://46elks.com/kb
+responseCodes:
+  throttled: 429
+limits:
+- name: SMS Send Rate
+  scope: account
+  metric: messages
+  limit: see provider support
+  notes: Effective throughput is shaped by operator/carrier limits and account standing.
+- name: Voice Call Concurrency
+  scope: account
+  metric: concurrent_calls
+  limit: see provider support
+  notes: Governed by allocated call channels; extra channels can be rented per month.
+- name: API Requests
+  scope: account
+  metric: requests
+  limit: see provider support
+  notes: No fixed public RPS documented; abusive traffic is throttled.
+- name: Account Balance
+  scope: account
+  metric: balance
+  limit: prepaid
+  notes: Sending stops when the prepaid balance is exhausted.
+policies:
+- name: Prepaid Gating
+  description: Usage is gated by the prepaid account balance rather than a hard rate cap.
+- name: Backoff Strategy
+  description: Clients should implement retries with exponential backoff and honor Retry-After on 429.
+- name: Volume Onboarding
+  description: High-volume messaging and calling is arranged with 46elks support for capacity and deliverability.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

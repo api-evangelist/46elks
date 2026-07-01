@@ -1,0 +1,254 @@
+{
+  "info": {
+    "_postman_id": "b6f0a4e2-46e1-4c7a-9f0e-46e1ks0000a1",
+    "name": "46elks API",
+    "description": "The 46elks CPaaS REST API (version a1). Base URL https://api.46elks.com/a1 with HTTP Basic authentication using your API username and API password. Set the baseUrl, apiUsername, and apiPassword collection variables.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      { "key": "username", "value": "{{apiUsername}}", "type": "string" },
+      { "key": "password", "value": "{{apiPassword}}", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.46elks.com/a1" },
+    { "key": "apiUsername", "value": "" },
+    { "key": "apiPassword", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "SMS",
+      "item": [
+        {
+          "name": "Send an SMS",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/sms",
+              "host": ["{{baseUrl}}"],
+              "path": ["sms"]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "from", "value": "Elks" },
+                { "key": "to", "value": "+46700000000" },
+                { "key": "message", "value": "Hello from 46elks!" },
+                { "key": "whendelivered", "value": "https://example.com/delivery", "disabled": true }
+              ]
+            },
+            "description": "Send a text message. from may be an alphanumeric sender ID (max 11 chars) or an E.164 number. Optional whendelivered, dryrun, flashsms, dontlog."
+          }
+        },
+        {
+          "name": "List sent and received SMS",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/sms",
+              "host": ["{{baseUrl}}"],
+              "path": ["sms"]
+            },
+            "description": "Retrieve SMS history."
+          }
+        },
+        {
+          "name": "Retrieve a single SMS",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/sms/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["sms", ":id"],
+              "variable": [{ "key": "id", "value": "", "description": "The ID of the SMS to retrieve." }]
+            },
+            "description": "Retrieve a single SMS by ID."
+          }
+        }
+      ]
+    },
+    {
+      "name": "MMS",
+      "item": [
+        {
+          "name": "Send an MMS",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mms",
+              "host": ["{{baseUrl}}"],
+              "path": ["mms"]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "from", "value": "+46700000000" },
+                { "key": "to", "value": "+46700000000" },
+                { "key": "message", "value": "Picture message" },
+                { "key": "image", "value": "" }
+              ]
+            },
+            "description": "Send a picture message (MMS)."
+          }
+        },
+        {
+          "name": "List MMS",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/mms", "host": ["{{baseUrl}}"], "path": ["mms"] },
+            "description": "Retrieve MMS history."
+          }
+        },
+        {
+          "name": "Retrieve a single MMS",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mms/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["mms", ":id"],
+              "variable": [{ "key": "id", "value": "", "description": "The ID of the MMS to retrieve." }]
+            },
+            "description": "Retrieve a single MMS by ID."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Calls",
+      "item": [
+        {
+          "name": "Make a voice call",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/calls", "host": ["{{baseUrl}}"], "path": ["calls"] },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "from", "value": "+46700000000" },
+                { "key": "to", "value": "+46766861004" },
+                { "key": "voice_start", "value": "{\"play\":\"https://example.com/hello.mp3\"}" },
+                { "key": "whenhangup", "value": "https://example.com/hangup", "disabled": true }
+              ]
+            },
+            "description": "Place an outbound call. voice_start is a URL returning the first action or an inline call-action JSON object (connect, play, ivr, record, hangup)."
+          }
+        },
+        {
+          "name": "List calls",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/calls", "host": ["{{baseUrl}}"], "path": ["calls"] },
+            "description": "Retrieve call history."
+          }
+        },
+        {
+          "name": "Retrieve a single call",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/calls/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["calls", ":id"],
+              "variable": [{ "key": "id", "value": "", "description": "The ID of the call to retrieve." }]
+            },
+            "description": "Retrieve a single call by ID."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Numbers",
+      "item": [
+        {
+          "name": "Allocate a phone number",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/numbers", "host": ["{{baseUrl}}"], "path": ["numbers"] },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "country", "value": "se" },
+                { "key": "sms_url", "value": "https://example.com/sms" },
+                { "key": "voice_start", "value": "https://example.com/voice" }
+              ]
+            },
+            "description": "Rent a virtual phone number and set its SMS and voice handlers."
+          }
+        },
+        {
+          "name": "List phone numbers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/numbers", "host": ["{{baseUrl}}"], "path": ["numbers"] },
+            "description": "List allocated numbers."
+          }
+        },
+        {
+          "name": "Reconfigure a phone number",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/numbers/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["numbers", ":id"],
+              "variable": [{ "key": "id", "value": "", "description": "The ID of the number to update." }]
+            },
+            "description": "Update a number's handlers or active state."
+          }
+        },
+        {
+          "name": "Deallocate a phone number",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/numbers/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["numbers", ":id"],
+              "variable": [{ "key": "id", "value": "", "description": "The ID of the number to release." }]
+            },
+            "description": "Release a rented number."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Media",
+      "item": [
+        {
+          "name": "List recordings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/recordings", "host": ["{{baseUrl}}"], "path": ["recordings"] },
+            "description": "List call recordings."
+          }
+        },
+        {
+          "name": "List MMS images",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/images", "host": ["{{baseUrl}}"], "path": ["images"] },
+            "description": "List MMS image history."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "46elks API",
+    "version": "a1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{apiUsername}}",
+      "password": "{{apiPassword}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SMS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send an SMS.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.46elks.com/a1/sms",
+            "body": {
+              "type": "urlencoded",
+              "data": [
+                { "key": "from", "value": "Elks" },
+                { "key": "to", "value": "+46700000000" },
+                { "key": "message", "value": "Hello from 46elks!" }
+              ]
+            }
+          },
+          "docs": "Send a text message. from may be an alphanumeric sender ID or an E.164 number; optional whendelivered, dryrun, flashsms, dontlog."
+        },
+        {
+          "info": {
+            "name": "List sent and received SMS.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/sms"
+          },
+          "docs": "Retrieve SMS history."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single SMS.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/sms/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The ID of the SMS to retrieve." }
+            ]
+          },
+          "docs": "Retrieve a single SMS by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MMS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send an MMS.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.46elks.com/a1/mms",
+            "body": {
+              "type": "urlencoded",
+              "data": [
+                { "key": "from", "value": "+46700000000" },
+                { "key": "to", "value": "+46700000000" },
+                { "key": "message", "value": "Picture message" },
+                { "key": "image", "value": "" }
+              ]
+            }
+          },
+          "docs": "Send a picture message (MMS)."
+        },
+        {
+          "info": {
+            "name": "List MMS.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/mms"
+          },
+          "docs": "Retrieve MMS history."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single MMS.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/mms/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The ID of the MMS to retrieve." }
+            ]
+          },
+          "docs": "Retrieve a single MMS by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Calls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Make a voice call.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.46elks.com/a1/calls",
+            "body": {
+              "type": "urlencoded",
+              "data": [
+                { "key": "from", "value": "+46700000000" },
+                { "key": "to", "value": "+46766861004" },
+                { "key": "voice_start", "value": "{\"play\":\"https://example.com/hello.mp3\"}" }
+              ]
+            }
+          },
+          "docs": "Place an outbound call. voice_start is a URL or inline call-action JSON (connect, play, ivr, record, hangup)."
+        },
+        {
+          "info": {
+            "name": "List calls.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/calls"
+          },
+          "docs": "Retrieve call history."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single call.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/calls/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The ID of the call to retrieve." }
+            ]
+          },
+          "docs": "Retrieve a single call by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Numbers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Allocate a phone number.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.46elks.com/a1/numbers",
+            "body": {
+              "type": "urlencoded",
+              "data": [
+                { "key": "country", "value": "se" },
+                { "key": "sms_url", "value": "https://example.com/sms" },
+                { "key": "voice_start", "value": "https://example.com/voice" }
+              ]
+            }
+          },
+          "docs": "Rent a virtual phone number and set its SMS and voice handlers."
+        },
+        {
+          "info": {
+            "name": "List phone numbers.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/numbers"
+          },
+          "docs": "List allocated numbers."
+        },
+        {
+          "info": {
+            "name": "Reconfigure a phone number.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.46elks.com/a1/numbers/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The ID of the number to update." }
+            ]
+          },
+          "docs": "Update a number's handlers or active state."
+        },
+        {
+          "info": {
+            "name": "Deallocate a phone number.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.46elks.com/a1/numbers/:id",
+            "params": [
+              { "name": "id", "value": "", "type": "path", "description": "The ID of the number to release." }
+            ]
+          },
+          "docs": "Release a rented number."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List recordings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/recordings"
+          },
+          "docs": "List call recordings."
+        },
+        {
+          "info": {
+            "name": "List MMS images.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/images"
+          },
+          "docs": "List MMS image history."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
