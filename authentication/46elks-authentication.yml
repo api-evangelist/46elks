@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/46elks-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic authentication using your 46elks API username and API password from
+    the dashboard.
+  sources:
+  - openapi/46elks-openapi.yml

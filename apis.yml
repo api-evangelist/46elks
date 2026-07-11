@@ -160,6 +160,10 @@ apis:
     the SMS and voice call primitives - generate a code, deliver it via POST /sms or
     a spoken IVR POST /calls, and confirm the user-entered value in your application.
 common:
+- type: DomainSecurity
+  url: security/46elks-domain-security.yml
+- type: Authentication
+  url: authentication/46elks-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/46elks
 - type: LinkedIn
@@ -174,6 +178,8 @@ common:
   url: rate-limits/46elks-rate-limits.yml
 - type: FinOps
   url: finops/46elks-finops.yml
+- url: https://46elks.com/blog
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
