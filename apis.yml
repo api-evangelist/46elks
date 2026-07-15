@@ -160,6 +160,8 @@ apis:
     the SMS and voice call primitives - generate a code, deliver it via POST /sms or
     a spoken IVR POST /calls, and confirm the user-entered value in your application.
 common:
+- type: AgenticAccess
+  url: agentic-access/46elks-agentic-access.yml
 - type: DomainSecurity
   url: security/46elks-domain-security.yml
 - type: Authentication
