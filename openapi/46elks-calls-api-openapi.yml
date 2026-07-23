@@ -1,0 +1,157 @@
+openapi: 3.0.3
+info:
+  title: 46elks Calls API
+  version: a1
+  description: A faithful, representative OpenAPI description of the 46elks CPaaS REST API. 46elks exposes a simple HTTP API for SMS, MMS, voice calls, phone number provisioning, and media. All requests use HTTP Basic authentication with an API username and API password issued in the 46elks dashboard. Request bodies are sent as application/x-www-form-urlencoded and responses are JSON.
+  contact:
+    name: 46elks
+    url: https://46elks.com/docs
+  license:
+    name: Proprietary
+    url: https://46elks.com/terms
+servers:
+- url: https://api.46elks.com/a1
+  description: 46elks production API (version a1)
+security:
+- basicAuth: []
+tags:
+- name: Calls
+  description: Make and receive programmable voice calls.
+paths:
+  /calls:
+    post:
+      tags:
+      - Calls
+      operationId: makeCall
+      summary: Make a voice call
+      description: Place an outbound call. voice_start is either a URL that returns the first call action or an inline JSON call-action object.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CallRequest'
+      responses:
+        '200':
+          description: Call initiated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Call'
+    get:
+      tags:
+      - Calls
+      operationId: listCalls
+      summary: List calls
+      responses:
+        '200':
+          description: A paged list of call objects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallList'
+  /calls/{id}:
+    get:
+      tags:
+      - Calls
+      operationId: getCall
+      summary: Retrieve a single call
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A single call object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Call'
+components:
+  schemas:
+    CallAction:
+      type: object
+      description: A 46elks call action returned by voice_start or a webhook. Exactly one of connect, play, ivr, record, or hangup is typically present.
+      properties:
+        connect:
+          type: string
+          description: E.164 number or SIP address (sip:...) to connect the call to.
+        play:
+          type: string
+          format: uri
+          description: URL of an audio file to play to the caller.
+        ivr:
+          type: string
+          format: uri
+          description: Audio prompt for an interactive voice menu; digits post back.
+        next:
+          type: string
+          format: uri
+          description: URL to fetch the next action from.
+        record:
+          type: string
+          description: Enable recording of the caller's response.
+        hangup:
+          type: string
+          description: Terminate the call.
+    Call:
+      type: object
+      properties:
+        id:
+          type: string
+        from:
+          type: string
+        to:
+          type: string
+        state:
+          type: string
+          enum:
+          - ongoing
+          - success
+          - busy
+          - failed
+        direction:
+          type: string
+        created:
+          type: string
+          format: date-time
+    CallRequest:
+      type: object
+      required:
+      - from
+      - to
+      - voice_start
+      properties:
+        from:
+          type: string
+          example: '+46700000000'
+        to:
+          type: string
+          example: '+46766861004'
+        voice_start:
+          description: First call action - a URL returning a call action, or an inline call-action JSON object (connect, play, ivr, record, hangup).
+          oneOf:
+          - type: string
+            format: uri
+          - $ref: '#/components/schemas/CallAction'
+        whenhangup:
+          type: string
+          format: uri
+          description: Webhook URL notified when the call ends.
+        timeout:
+          type: integer
+          description: Seconds to wait before abandoning an unanswered call.
+    CallList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Call'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your 46elks API username and API password from the dashboard.

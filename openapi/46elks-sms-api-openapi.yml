@@ -1,0 +1,174 @@
+openapi: 3.0.3
+info:
+  title: 46elks Calls SMS API
+  version: a1
+  description: A faithful, representative OpenAPI description of the 46elks CPaaS REST API. 46elks exposes a simple HTTP API for SMS, MMS, voice calls, phone number provisioning, and media. All requests use HTTP Basic authentication with an API username and API password issued in the 46elks dashboard. Request bodies are sent as application/x-www-form-urlencoded and responses are JSON.
+  contact:
+    name: 46elks
+    url: https://46elks.com/docs
+  license:
+    name: Proprietary
+    url: https://46elks.com/terms
+servers:
+- url: https://api.46elks.com/a1
+  description: 46elks production API (version a1)
+security:
+- basicAuth: []
+tags:
+- name: SMS
+  description: Send and receive text messages.
+paths:
+  /sms:
+    post:
+      tags:
+      - SMS
+      operationId: sendSms
+      summary: Send an SMS
+      description: Send a text message to one or more mobile phones. The sender may be an alphanumeric sender ID (up to 11 characters) or an E.164 number you own.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SmsRequest'
+      responses:
+        '200':
+          description: SMS accepted for delivery.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sms'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    get:
+      tags:
+      - SMS
+      operationId: listSms
+      summary: List sent and received SMS
+      parameters:
+      - name: start
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: end
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A paged list of SMS objects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SmsList'
+  /sms/{id}:
+    get:
+      tags:
+      - SMS
+      operationId: getSms
+      summary: Retrieve a single SMS
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A single SMS object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sms'
+components:
+  schemas:
+    SmsList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sms'
+    Sms:
+      type: object
+      properties:
+        id:
+          type: string
+          example: s123abc456def
+        from:
+          type: string
+        to:
+          type: string
+        message:
+          type: string
+        status:
+          type: string
+          enum:
+          - created
+          - sent
+          - delivered
+          - failed
+        direction:
+          type: string
+          enum:
+          - outgoing
+          - incoming
+        cost:
+          type: integer
+          description: Cost in 10,000ths of the account currency.
+        parts:
+          type: integer
+        created:
+          type: string
+          format: date-time
+    SmsRequest:
+      type: object
+      required:
+      - from
+      - to
+      - message
+      properties:
+        from:
+          type: string
+          description: Alphanumeric sender ID (max 11 chars) or E.164 number.
+          example: Elks
+        to:
+          type: string
+          description: Recipient number in E.164 format.
+          example: '+46700000000'
+        message:
+          type: string
+          example: Hello from 46elks!
+        dryrun:
+          type: string
+          enum:
+          - 'yes'
+          description: Validate without sending.
+        flashsms:
+          type: string
+          enum:
+          - 'yes'
+          description: Send as a flash SMS shown immediately, not stored.
+        whendelivered:
+          type: string
+          format: uri
+          description: Webhook URL notified with the delivery status.
+        dontlog:
+          type: string
+          enum:
+          - message
+          description: Do not store the message text in history.
+  responses:
+    Unauthorized:
+      description: Missing or invalid API credentials.
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your 46elks API username and API password from the dashboard.

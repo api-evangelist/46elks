@@ -1,0 +1,151 @@
+openapi: 3.0.3
+info:
+  title: 46elks Calls Numbers API
+  version: a1
+  description: A faithful, representative OpenAPI description of the 46elks CPaaS REST API. 46elks exposes a simple HTTP API for SMS, MMS, voice calls, phone number provisioning, and media. All requests use HTTP Basic authentication with an API username and API password issued in the 46elks dashboard. Request bodies are sent as application/x-www-form-urlencoded and responses are JSON.
+  contact:
+    name: 46elks
+    url: https://46elks.com/docs
+  license:
+    name: Proprietary
+    url: https://46elks.com/terms
+servers:
+- url: https://api.46elks.com/a1
+  description: 46elks production API (version a1)
+security:
+- basicAuth: []
+tags:
+- name: Numbers
+  description: Allocate and manage virtual phone numbers.
+paths:
+  /numbers:
+    post:
+      tags:
+      - Numbers
+      operationId: allocateNumber
+      summary: Allocate a phone number
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NumberRequest'
+      responses:
+        '200':
+          description: Number allocated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Number'
+    get:
+      tags:
+      - Numbers
+      operationId: listNumbers
+      summary: List allocated phone numbers
+      responses:
+        '200':
+          description: A list of number objects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NumberList'
+  /numbers/{id}:
+    post:
+      tags:
+      - Numbers
+      operationId: updateNumber
+      summary: Reconfigure a phone number
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NumberRequest'
+      responses:
+        '200':
+          description: Number updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Number'
+    delete:
+      tags:
+      - Numbers
+      operationId: deallocateNumber
+      summary: Deallocate a phone number
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Number released.
+components:
+  schemas:
+    Number:
+      type: object
+      properties:
+        id:
+          type: string
+          example: nadaf5cd3c86dd7f0c805823647d15b1e
+        number:
+          type: string
+          example: '+46766861004'
+        country:
+          type: string
+        capabilities:
+          type: array
+          items:
+            type: string
+            enum:
+            - sms
+            - mms
+            - voice
+        active:
+          type: string
+        sms_url:
+          type: string
+        voice_start:
+          type: string
+        cost:
+          type: integer
+    NumberList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Number'
+    NumberRequest:
+      type: object
+      properties:
+        country:
+          type: string
+          description: ISO country code for the number to allocate (e.g. se, gb, us).
+          example: se
+        sms_url:
+          type: string
+          format: uri
+          description: Webhook URL for inbound SMS to this number.
+        voice_start:
+          type: string
+          format: uri
+          description: Webhook URL for inbound calls to this number.
+        active:
+          type: string
+          enum:
+          - 'yes'
+          - 'no'
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your 46elks API username and API password from the dashboard.

@@ -1,0 +1,116 @@
+openapi: 3.0.3
+info:
+  title: 46elks Calls MMS API
+  version: a1
+  description: A faithful, representative OpenAPI description of the 46elks CPaaS REST API. 46elks exposes a simple HTTP API for SMS, MMS, voice calls, phone number provisioning, and media. All requests use HTTP Basic authentication with an API username and API password issued in the 46elks dashboard. Request bodies are sent as application/x-www-form-urlencoded and responses are JSON.
+  contact:
+    name: 46elks
+    url: https://46elks.com/docs
+  license:
+    name: Proprietary
+    url: https://46elks.com/terms
+servers:
+- url: https://api.46elks.com/a1
+  description: 46elks production API (version a1)
+security:
+- basicAuth: []
+tags:
+- name: MMS
+  description: Send and receive picture messages.
+paths:
+  /mms:
+    post:
+      tags:
+      - MMS
+      operationId: sendMms
+      summary: Send an MMS
+      description: Send a picture message to a mobile phone.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MmsRequest'
+      responses:
+        '200':
+          description: MMS accepted for delivery.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mms'
+    get:
+      tags:
+      - MMS
+      operationId: listMms
+      summary: List sent and received MMS
+      responses:
+        '200':
+          description: A paged list of MMS objects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MmsList'
+  /mms/{id}:
+    get:
+      tags:
+      - MMS
+      operationId: getMms
+      summary: Retrieve a single MMS
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A single MMS object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Mms'
+components:
+  schemas:
+    MmsList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Mms'
+    Mms:
+      type: object
+      properties:
+        id:
+          type: string
+        from:
+          type: string
+        to:
+          type: string
+        message:
+          type: string
+        status:
+          type: string
+        created:
+          type: string
+          format: date-time
+    MmsRequest:
+      type: object
+      required:
+      - from
+      - to
+      properties:
+        from:
+          type: string
+        to:
+          type: string
+        message:
+          type: string
+        image:
+          type: string
+          description: Base64 image data or a hosted image URL.
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your 46elks API username and API password from the dashboard.

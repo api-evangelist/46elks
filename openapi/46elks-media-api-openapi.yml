@@ -1,0 +1,92 @@
+openapi: 3.0.3
+info:
+  title: 46elks Calls Media API
+  version: a1
+  description: A faithful, representative OpenAPI description of the 46elks CPaaS REST API. 46elks exposes a simple HTTP API for SMS, MMS, voice calls, phone number provisioning, and media. All requests use HTTP Basic authentication with an API username and API password issued in the 46elks dashboard. Request bodies are sent as application/x-www-form-urlencoded and responses are JSON.
+  contact:
+    name: 46elks
+    url: https://46elks.com/docs
+  license:
+    name: Proprietary
+    url: https://46elks.com/terms
+servers:
+- url: https://api.46elks.com/a1
+  description: 46elks production API (version a1)
+security:
+- basicAuth: []
+tags:
+- name: Media
+  description: Access recordings and MMS images.
+paths:
+  /recordings:
+    get:
+      tags:
+      - Media
+      operationId: listRecordings
+      summary: List call recordings
+      responses:
+        '200':
+          description: A list of recording objects.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Recording'
+  /images:
+    get:
+      tags:
+      - Media
+      operationId: listImages
+      summary: List MMS images
+      responses:
+        '200':
+          description: A list of image objects.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Image'
+components:
+  schemas:
+    Recording:
+      type: object
+      properties:
+        id:
+          type: string
+        callid:
+          type: string
+        created:
+          type: string
+          format: date-time
+        wav:
+          type: string
+          format: uri
+        mp3:
+          type: string
+          format: uri
+    Image:
+      type: object
+      properties:
+        id:
+          type: string
+        mmsid:
+          type: string
+        created:
+          type: string
+          format: date-time
+        url:
+          type: string
+          format: uri
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using your 46elks API username and API password from the dashboard.
