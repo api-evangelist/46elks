@@ -7,7 +7,20 @@ description: 46elks is a Swedish communications platform as a service (CPaaS) of
   voice calls with programmable call actions, provisioning virtual phone numbers,
   and handling media and recordings. The API uses HTTP Basic authentication with an
   API username and password, and is billed pay-as-you-go.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/46elks.png
 tags:
 - CPaaS
 - SMS
@@ -20,145 +33,146 @@ created: '2026-07-01'
 modified: '2026-07-01'
 specificationVersion: '0.19'
 apis:
-- aid: 46elks:46elks-sms-api
-  name: 46elks SMS API
-  tags:
-  - SMS
-  - Messaging
-  - Text
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: 46elks:46elks-calls-api
+  name: 46elks Calls API
+  description: Make and receive programmable voice calls.
   humanURL: https://46elks.com/docs/send-sms
   baseURL: https://api.46elks.com/a1
-  properties:
-  - url: https://46elks.com/docs/send-sms
-    type: Documentation
-  - url: https://46elks.com/docs
-    type: APIReference
-  - url: openapi/46elks-openapi.yml
-    type: OpenAPI
-  - url: collections/46elks.postman_collection.json
-    type: PostmanCollection
-  - url: collections/46elks.opencollection.json
-    type: OpenCollection
-  description: Send and receive text messages worldwide. POST to /sms with from, to,
-    and message, with support for delivery reports (whendelivered webhook), dry runs,
-    flash SMS, and alphanumeric sender IDs. GET /sms and /sms/{id} retrieve message
-    history.
-- aid: 46elks:46elks-mms-api
-  name: 46elks MMS API
   tags:
-  - MMS
-  - Messaging
-  - Media
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://46elks.com/docs/send-mms
-  baseURL: https://api.46elks.com/a1
-  properties:
-  - url: https://46elks.com/docs/send-mms
-    type: Documentation
-  - url: https://46elks.com/docs
-    type: APIReference
-  - url: openapi/46elks-openapi.yml
-    type: OpenAPI
-  - url: collections/46elks.postman_collection.json
-    type: PostmanCollection
-  - url: collections/46elks.opencollection.json
-    type: OpenCollection
-  description: Send picture messages (MMS) to mobile phones. POST to /mms with from,
-    to, message, and image data, and GET /mms and /mms/{id} to retrieve MMS history.
-- aid: 46elks:46elks-voice-calls-api
-  name: 46elks Voice Calls API
-  tags:
-  - Voice
   - Calls
-  - IVR
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://46elks.com/docs/make-call
-  baseURL: https://api.46elks.com/a1
   properties:
-  - url: https://46elks.com/docs/make-call
-    type: Documentation
-  - url: https://46elks.com/docs
-    type: APIReference
-  - url: openapi/46elks-openapi.yml
-    type: OpenAPI
-  - url: collections/46elks.postman_collection.json
-    type: PostmanCollection
-  - url: collections/46elks.opencollection.json
-    type: OpenCollection
-  description: Make and receive programmable voice calls. POST to /calls with from,
-    to, and voice_start driving JSON call actions (connect, play, ivr, record, hangup)
-    delivered via webhook, plus whenhangup callbacks. GET /calls and /calls/{id} retrieve
-    call history.
-- aid: 46elks:46elks-phone-numbers-api
-  name: 46elks Phone Numbers API
-  tags:
-  - Phone Numbers
-  - Provisioning
-  - Virtual Numbers
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://46elks.com/docs/allocate-phone-number
-  baseURL: https://api.46elks.com/a1
-  properties:
-  - url: https://46elks.com/docs/allocate-phone-number
-    type: Documentation
-  - url: https://46elks.com/docs
-    type: APIReference
-  - url: openapi/46elks-openapi.yml
-    type: OpenAPI
-  - url: collections/46elks.postman_collection.json
-    type: PostmanCollection
-  - url: collections/46elks.opencollection.json
-    type: OpenCollection
-  description: Allocate, configure, and deallocate virtual phone numbers. POST to /numbers
-    to rent a number and set sms_url / voice_start handlers, GET /numbers to list,
-    and POST or DELETE /numbers/{id} to reconfigure or release a number.
+  - type: OpenAPI
+    url: openapi/46elks-calls-api-openapi.yml
+  - type: Documentation
+    url: https://46elks.com/docs/send-sms
+  - type: APIReference
+    url: https://46elks.com/docs
+  - type: PostmanCollection
+    url: collections/46elks.postman_collection.json
+  - type: OpenCollection
+    url: collections/46elks.opencollection.json
+  - type: Documentation
+    url: https://46elks.com/docs/send-mms
+  - type: Documentation
+    url: https://46elks.com/docs/make-call
+  - type: Documentation
+    url: https://46elks.com/docs/allocate-phone-number
+  - type: Documentation
+    url: https://46elks.com/docs/recordings
+  - type: Documentation
+    url: https://46elks.com/kb/verify-phone-number
 - aid: 46elks:46elks-media-api
   name: 46elks Media API
+  description: Access recordings and MMS images.
+  humanURL: https://46elks.com/docs/send-sms
+  baseURL: https://api.46elks.com/a1
   tags:
   - Media
-  - Recordings
-  - Images
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://46elks.com/docs/recordings
-  baseURL: https://api.46elks.com/a1
   properties:
-  - url: https://46elks.com/docs/recordings
-    type: Documentation
-  - url: https://46elks.com/docs
-    type: APIReference
-  - url: openapi/46elks-openapi.yml
-    type: OpenAPI
-  - url: collections/46elks.postman_collection.json
-    type: PostmanCollection
-  - url: collections/46elks.opencollection.json
-    type: OpenCollection
-  description: Access media generated by the platform - GET /recordings for call recordings
-    and GET /images for MMS image history - for archiving, transcription, and playback
-    workflows.
-- aid: 46elks:46elks-verification-api
-  name: 46elks Verification API
+  - type: OpenAPI
+    url: openapi/46elks-media-api-openapi.yml
+  - type: Documentation
+    url: https://46elks.com/docs/send-sms
+  - type: APIReference
+    url: https://46elks.com/docs
+  - type: PostmanCollection
+    url: collections/46elks.postman_collection.json
+  - type: OpenCollection
+    url: collections/46elks.opencollection.json
+  - type: Documentation
+    url: https://46elks.com/docs/send-mms
+  - type: Documentation
+    url: https://46elks.com/docs/make-call
+  - type: Documentation
+    url: https://46elks.com/docs/allocate-phone-number
+  - type: Documentation
+    url: https://46elks.com/docs/recordings
+  - type: Documentation
+    url: https://46elks.com/kb/verify-phone-number
+- aid: 46elks:46elks-mms-api
+  name: 46elks MMS API
+  description: Send and receive picture messages.
+  humanURL: https://46elks.com/docs/send-sms
+  baseURL: https://api.46elks.com/a1
   tags:
-  - Verification
-  - OTP
-  - Two-Factor
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://46elks.com/kb/verify-phone-number
-  baseURL: https://api.46elks.com/a1
+  - MMS
   properties:
-  - url: https://46elks.com/kb/verify-phone-number
-    type: Documentation
-  - url: https://46elks.com/docs
-    type: APIReference
-  - url: openapi/46elks-openapi.yml
-    type: OpenAPI
-  - url: collections/46elks.postman_collection.json
-    type: PostmanCollection
-  - url: collections/46elks.opencollection.json
-    type: OpenCollection
-  description: Phone number verification and one-time passcodes (OTP / 2FA) built on
-    the SMS and voice call primitives - generate a code, deliver it via POST /sms or
-    a spoken IVR POST /calls, and confirm the user-entered value in your application.
+  - type: OpenAPI
+    url: openapi/46elks-mms-api-openapi.yml
+  - type: Documentation
+    url: https://46elks.com/docs/send-sms
+  - type: APIReference
+    url: https://46elks.com/docs
+  - type: PostmanCollection
+    url: collections/46elks.postman_collection.json
+  - type: OpenCollection
+    url: collections/46elks.opencollection.json
+  - type: Documentation
+    url: https://46elks.com/docs/send-mms
+  - type: Documentation
+    url: https://46elks.com/docs/make-call
+  - type: Documentation
+    url: https://46elks.com/docs/allocate-phone-number
+  - type: Documentation
+    url: https://46elks.com/docs/recordings
+  - type: Documentation
+    url: https://46elks.com/kb/verify-phone-number
+- aid: 46elks:46elks-numbers-api
+  name: 46elks Numbers API
+  description: Allocate and manage virtual phone numbers.
+  humanURL: https://46elks.com/docs/send-sms
+  baseURL: https://api.46elks.com/a1
+  tags:
+  - Numbers
+  properties:
+  - type: OpenAPI
+    url: openapi/46elks-numbers-api-openapi.yml
+  - type: Documentation
+    url: https://46elks.com/docs/send-sms
+  - type: APIReference
+    url: https://46elks.com/docs
+  - type: PostmanCollection
+    url: collections/46elks.postman_collection.json
+  - type: OpenCollection
+    url: collections/46elks.opencollection.json
+  - type: Documentation
+    url: https://46elks.com/docs/send-mms
+  - type: Documentation
+    url: https://46elks.com/docs/make-call
+  - type: Documentation
+    url: https://46elks.com/docs/allocate-phone-number
+  - type: Documentation
+    url: https://46elks.com/docs/recordings
+  - type: Documentation
+    url: https://46elks.com/kb/verify-phone-number
+- aid: 46elks:46elks-sms-api
+  name: 46elks SMS API
+  description: Send and receive text messages.
+  humanURL: https://46elks.com/docs/send-sms
+  baseURL: https://api.46elks.com/a1
+  tags:
+  - SMS
+  properties:
+  - type: OpenAPI
+    url: openapi/46elks-sms-api-openapi.yml
+  - type: Documentation
+    url: https://46elks.com/docs/send-sms
+  - type: APIReference
+    url: https://46elks.com/docs
+  - type: PostmanCollection
+    url: collections/46elks.postman_collection.json
+  - type: OpenCollection
+    url: collections/46elks.opencollection.json
+  - type: Documentation
+    url: https://46elks.com/docs/send-mms
+  - type: Documentation
+    url: https://46elks.com/docs/make-call
+  - type: Documentation
+    url: https://46elks.com/docs/allocate-phone-number
+  - type: Documentation
+    url: https://46elks.com/docs/recordings
+  - type: Documentation
+    url: https://46elks.com/kb/verify-phone-number
 common:
 - type: AgenticAccess
   url: agentic-access/46elks-agentic-access.yml
