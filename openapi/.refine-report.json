@@ -1,0 +1,22 @@
+{
+  "provider": "46elks",
+  "sources": [
+    "46elks-calls-api-openapi.yml",
+    "46elks-media-api-openapi.yml",
+    "46elks-mms-api-openapi.yml",
+    "46elks-numbers-api-openapi.yml",
+    "46elks-sms-api-openapi.yml"
+  ],
+  "outputs": [
+    "46elks-calls-api-openapi.yml",
+    "46elks-media-api-openapi.yml",
+    "46elks-mms-api-openapi.yml",
+    "46elks-numbers-api-openapi.yml",
+    "46elks-sms-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
