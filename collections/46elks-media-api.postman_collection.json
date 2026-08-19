@@ -1,0 +1,195 @@
+{
+  "item": [
+    {
+      "id": "14e4ddab-aa00-456e-9931-cbbf77675a28",
+      "name": "Media",
+      "description": {
+        "content": "Access recordings and MMS images.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "49c5ec27-ee63-4ac7-83c9-3c37f77e1d94",
+          "name": "List call recordings",
+          "request": {
+            "name": "List call recordings",
+            "description": {},
+            "url": {
+              "path": [
+                "recordings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ff464a3-5f68-4c41-9758-2f5cabf15715",
+              "name": "A list of recording objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recordings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"callid\": \"string\",\n      \"created\": \"1956-07-25T03:11:39.611Z\",\n      \"wav\": \"https://vllXBWHYlfLWkwHjIyEPkn.qpssDWHOn2rkq-IGdBD3CSRbEwcpnx-8qRAB16U2AhYkUkcK64k\",\n      \"mp3\": \"https://zujPpwh.fkgmZJoXfoa\"\n    },\n    {\n      \"id\": \"string\",\n      \"callid\": \"string\",\n      \"created\": \"1982-02-01T04:43:19.130Z\",\n      \"wav\": \"https://GKfBMVTqaQEyUjujH.xjyT06pFNW7O7xDmJJFoTMaOw8sWR1bx,fOk8NBUNfnwC\",\n      \"mp3\": \"http://YgAYdOKIEeFwMrIMpFFNVWzqstwNXO.gajxSkohLp.t+HSITitcqJLIuAEOgl\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a5eb1fd-85d7-4ab9-a228-46570234ecfb",
+          "name": "List MMS images",
+          "request": {
+            "name": "List MMS images",
+            "description": {},
+            "url": {
+              "path": [
+                "images"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b5fa80ca-c3ee-4c52-868a-d5a4b77e0a35",
+              "name": "A list of image objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"mmsid\": \"string\",\n      \"created\": \"2009-12-24T03:55:58.163Z\",\n      \"url\": \"https://xArSQNFyaxLzMkSzRNCbTJobKGgJArfs.ospEEXcja4xAThnAjTg9O2bV6VGzhDhiT2mVR2-Xnge\"\n    },\n    {\n      \"id\": \"string\",\n      \"mmsid\": \"string\",\n      \"created\": \"1958-03-09T07:17:39.728Z\",\n      \"url\": \"https://okpWInzPnKILIHEKHhVbQhc.psUiKfUIM3kT5sWGD\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.46elks.com/a1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bd911def-1749-4713-a202-5c1aff858f2f",
+    "name": "46elks Calls Media API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A faithful, representative OpenAPI description of the 46elks CPaaS REST API. 46elks exposes a simple HTTP API for SMS, MMS, voice calls, phone number provisioning, and media. All requests use HTTP Basic authentication with an API username and API password issued in the 46elks dashboard. Request bodies are sent as application/x-www-form-urlencoded and responses are JSON.\n\nContact Support:\n Name: 46elks",
+      "type": "text/plain"
+    }
+  }
+}

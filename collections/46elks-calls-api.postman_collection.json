@@ -1,0 +1,379 @@
+{
+  "item": [
+    {
+      "id": "e0ecbe78-67ab-4bbb-8c41-6af6b98d75fb",
+      "name": "Calls",
+      "description": {
+        "content": "Make and receive programmable voice calls.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9d38d677-5110-40d4-bfea-ce433182853c",
+          "name": "Make a voice call",
+          "request": {
+            "name": "Make a voice call",
+            "description": {
+              "content": "Place an outbound call. voice_start is either a URL that returns the first call action or an inline JSON call-action object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "calls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "voice_start",
+                  "value": "<uri>",
+                  "description": "(Required) First call action - a URL returning a call action, or an inline call-action JSON object (connect, play, ivr, record, hangup)."
+                },
+                {
+                  "disabled": false,
+                  "key": "whenhangup",
+                  "value": "<uri>",
+                  "description": "Webhook URL notified when the call ends."
+                },
+                {
+                  "disabled": false,
+                  "key": "timeout",
+                  "value": "<integer>",
+                  "description": "Seconds to wait before abandoning an unanswered call."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f2c0f516-6420-478c-b60b-d99ada738b80",
+              "name": "Call initiated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "+46700000000"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "+46766861004"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) First call action - a URL returning a call action, or an inline call-action JSON object (connect, play, ivr, record, hangup).",
+                        "type": "text/plain"
+                      },
+                      "key": "voice_start",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webhook URL notified when the call ends.",
+                        "type": "text/plain"
+                      },
+                      "key": "whenhangup",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Seconds to wait before abandoning an unanswered call.",
+                        "type": "text/plain"
+                      },
+                      "key": "timeout",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"from\": \"string\",\n  \"to\": \"string\",\n  \"state\": \"ongoing\",\n  \"direction\": \"string\",\n  \"created\": \"2001-11-19T06:36:34.913Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c950943-27d9-474d-91ed-0328902a2316",
+          "name": "List calls",
+          "request": {
+            "name": "List calls",
+            "description": {},
+            "url": {
+              "path": [
+                "calls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "901a1774-8552-4ec5-9494-d57ea6bfe002",
+              "name": "A paged list of call objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"from\": \"string\",\n      \"to\": \"string\",\n      \"state\": \"success\",\n      \"direction\": \"string\",\n      \"created\": \"1987-03-14T15:28:32.309Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"from\": \"string\",\n      \"to\": \"string\",\n      \"state\": \"failed\",\n      \"direction\": \"string\",\n      \"created\": \"2021-06-07T20:05:01.061Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "506cdc33-3d42-4be9-b017-5f5740f16c13",
+          "name": "Retrieve a single call",
+          "request": {
+            "name": "Retrieve a single call",
+            "description": {},
+            "url": {
+              "path": [
+                "calls",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d8297f62-b2ef-4d32-a1d2-03ca5a04e86d",
+              "name": "A single call object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "calls",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"from\": \"string\",\n  \"to\": \"string\",\n  \"state\": \"ongoing\",\n  \"direction\": \"string\",\n  \"created\": \"2001-11-19T06:36:34.913Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.46elks.com/a1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ab6870e1-efa9-4470-afe0-3bea90f34d6c",
+    "name": "46elks Calls API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A faithful, representative OpenAPI description of the 46elks CPaaS REST API. 46elks exposes a simple HTTP API for SMS, MMS, voice calls, phone number provisioning, and media. All requests use HTTP Basic authentication with an API username and API password issued in the 46elks dashboard. Request bodies are sent as application/x-www-form-urlencoded and responses are JSON.\n\nContact Support:\n Name: 46elks",
+      "type": "text/plain"
+    }
+  }
+}

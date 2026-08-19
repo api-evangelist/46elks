@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "46elks Calls API",
+    "version": "a1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Calls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List calls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/calls"
+          },
+          "docs": "List calls"
+        },
+        {
+          "info": {
+            "name": "Make a voice call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.46elks.com/a1/calls",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Place an outbound call. voice_start is either a URL that returns the first call action or an inline JSON call-action object."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single call",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/calls/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single call"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

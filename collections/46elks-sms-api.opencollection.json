@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "46elks Calls SMS API",
+    "version": "a1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SMS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List sent and received SMS",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/sms",
+            "params": [
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List sent and received SMS"
+        },
+        {
+          "info": {
+            "name": "Send an SMS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.46elks.com/a1/sms",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Send a text message to one or more mobile phones. The sender may be an alphanumeric sender ID (up to 11 characters) or an E.164 number you own."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single SMS",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/sms/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single SMS"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

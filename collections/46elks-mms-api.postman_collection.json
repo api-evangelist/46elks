@@ -1,0 +1,359 @@
+{
+  "item": [
+    {
+      "id": "46adf876-3897-4e33-b912-e5864578791e",
+      "name": "MMS",
+      "description": {
+        "content": "Send and receive picture messages.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8cff8c8a-c74a-460c-a85a-8a0436a576da",
+          "name": "Send an MMS",
+          "request": {
+            "name": "Send an MMS",
+            "description": {
+              "content": "Send a picture message to a mobile phone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "message",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "image",
+                  "value": "<string>",
+                  "description": "Base64 image data or a hosted image URL."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "58e25572-930c-4ce8-bc11-cd484c7ac68f",
+              "name": "MMS accepted for delivery.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "message",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Base64 image data or a hosted image URL.",
+                        "type": "text/plain"
+                      },
+                      "key": "image",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"from\": \"string\",\n  \"to\": \"string\",\n  \"message\": \"string\",\n  \"status\": \"string\",\n  \"created\": \"2010-07-31T17:08:04.558Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fbb2b66-866f-4962-acb8-13f3806d60de",
+          "name": "List sent and received MMS",
+          "request": {
+            "name": "List sent and received MMS",
+            "description": {},
+            "url": {
+              "path": [
+                "mms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "17eb29cd-53c5-4dd0-abea-5c52c369e983",
+              "name": "A paged list of MMS objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"from\": \"string\",\n      \"to\": \"string\",\n      \"message\": \"string\",\n      \"status\": \"string\",\n      \"created\": \"2018-10-03T08:58:06.966Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"from\": \"string\",\n      \"to\": \"string\",\n      \"message\": \"string\",\n      \"status\": \"string\",\n      \"created\": \"1981-10-01T10:03:46.479Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fecf431e-362b-4d26-ac10-1651ee455a7e",
+          "name": "Retrieve a single MMS",
+          "request": {
+            "name": "Retrieve a single MMS",
+            "description": {},
+            "url": {
+              "path": [
+                "mms",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e95342c8-8c94-4032-9815-dfea9f853d59",
+              "name": "A single MMS object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mms",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"from\": \"string\",\n  \"to\": \"string\",\n  \"message\": \"string\",\n  \"status\": \"string\",\n  \"created\": \"2010-07-31T17:08:04.558Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.46elks.com/a1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b89a223d-9da0-4281-871f-ae33aae3df98",
+    "name": "46elks Calls MMS API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A faithful, representative OpenAPI description of the 46elks CPaaS REST API. 46elks exposes a simple HTTP API for SMS, MMS, voice calls, phone number provisioning, and media. All requests use HTTP Basic authentication with an API username and API password issued in the 46elks dashboard. Request bodies are sent as application/x-www-form-urlencoded and responses are JSON.\n\nContact Support:\n Name: 46elks",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,544 @@
+{
+  "item": [
+    {
+      "id": "e9e96827-7ead-482d-b088-e41657e7c8f3",
+      "name": "SMS",
+      "description": {
+        "content": "Send and receive text messages.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "05a5e5cf-b9f9-4018-9eb7-0f4cedd1f608",
+          "name": "Send an SMS",
+          "request": {
+            "name": "Send an SMS",
+            "description": {
+              "content": "Send a text message to one or more mobile phones. The sender may be an alphanumeric sender ID (up to 11 characters) or an E.164 number you own.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "(Required) Alphanumeric sender ID (max 11 chars) or E.164 number."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) Recipient number in E.164 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "message",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "dryrun",
+                  "value": "<string>",
+                  "description": "Validate without sending."
+                },
+                {
+                  "disabled": false,
+                  "key": "flashsms",
+                  "value": "<string>",
+                  "description": "Send as a flash SMS shown immediately, not stored."
+                },
+                {
+                  "disabled": false,
+                  "key": "whendelivered",
+                  "value": "<uri>",
+                  "description": "Webhook URL notified with the delivery status."
+                },
+                {
+                  "disabled": false,
+                  "key": "dontlog",
+                  "value": "<string>",
+                  "description": "Do not store the message text in history."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2389e942-cf33-451b-8cd0-6395596e4173",
+              "name": "SMS accepted for delivery.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Alphanumeric sender ID (max 11 chars) or E.164 number.",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "Elks"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Recipient number in E.164 format.",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "+46700000000"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "message",
+                      "value": "Hello from 46elks!"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Validate without sending.",
+                        "type": "text/plain"
+                      },
+                      "key": "dryrun",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Send as a flash SMS shown immediately, not stored.",
+                        "type": "text/plain"
+                      },
+                      "key": "flashsms",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webhook URL notified with the delivery status.",
+                        "type": "text/plain"
+                      },
+                      "key": "whendelivered",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Do not store the message text in history.",
+                        "type": "text/plain"
+                      },
+                      "key": "dontlog",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"s123abc456def\",\n  \"from\": \"string\",\n  \"to\": \"string\",\n  \"message\": \"string\",\n  \"status\": \"created\",\n  \"direction\": \"outgoing\",\n  \"cost\": 3948,\n  \"parts\": 9666,\n  \"created\": \"2009-07-23T17:19:01.765Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc08fd9d-63e0-45d8-a6e7-0f16365edbb5",
+              "name": "Missing or invalid API credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Alphanumeric sender ID (max 11 chars) or E.164 number.",
+                        "type": "text/plain"
+                      },
+                      "key": "from",
+                      "value": "Elks"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Recipient number in E.164 format.",
+                        "type": "text/plain"
+                      },
+                      "key": "to",
+                      "value": "+46700000000"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "message",
+                      "value": "Hello from 46elks!"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Validate without sending.",
+                        "type": "text/plain"
+                      },
+                      "key": "dryrun",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Send as a flash SMS shown immediately, not stored.",
+                        "type": "text/plain"
+                      },
+                      "key": "flashsms",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webhook URL notified with the delivery status.",
+                        "type": "text/plain"
+                      },
+                      "key": "whendelivered",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Do not store the message text in history.",
+                        "type": "text/plain"
+                      },
+                      "key": "dontlog",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c860fb5-9675-42ec-9940-d16d5fd22901",
+          "name": "List sent and received SMS",
+          "request": {
+            "name": "List sent and received SMS",
+            "description": {},
+            "url": {
+              "path": [
+                "sms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "414ee616-3153-41ed-a27f-b31a6a671c47",
+              "name": "A paged list of SMS objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"s123abc456def\",\n      \"from\": \"string\",\n      \"to\": \"string\",\n      \"message\": \"string\",\n      \"status\": \"delivered\",\n      \"direction\": \"incoming\",\n      \"cost\": 1816,\n      \"parts\": 6563,\n      \"created\": \"2005-08-11T10:44:51.780Z\"\n    },\n    {\n      \"id\": \"s123abc456def\",\n      \"from\": \"string\",\n      \"to\": \"string\",\n      \"message\": \"string\",\n      \"status\": \"delivered\",\n      \"direction\": \"incoming\",\n      \"cost\": 3334,\n      \"parts\": 3696,\n      \"created\": \"1997-12-04T03:43:56.362Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "448438fb-57a4-4ef7-88fd-8dd6601aa343",
+          "name": "Retrieve a single SMS",
+          "request": {
+            "name": "Retrieve a single SMS",
+            "description": {},
+            "url": {
+              "path": [
+                "sms",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e6bae30-f31d-46ea-af82-558430e90e83",
+              "name": "A single SMS object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"s123abc456def\",\n  \"from\": \"string\",\n  \"to\": \"string\",\n  \"message\": \"string\",\n  \"status\": \"created\",\n  \"direction\": \"outgoing\",\n  \"cost\": 3948,\n  \"parts\": 9666,\n  \"created\": \"2009-07-23T17:19:01.765Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.46elks.com/a1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "844fed1a-ca8d-4aa9-bd81-b1de49d81fda",
+    "name": "46elks Calls SMS API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A faithful, representative OpenAPI description of the 46elks CPaaS REST API. 46elks exposes a simple HTTP API for SMS, MMS, voice calls, phone number provisioning, and media. All requests use HTTP Basic authentication with an API username and API password issued in the 46elks dashboard. Request bodies are sent as application/x-www-form-urlencoded and responses are JSON.\n\nContact Support:\n Name: 46elks",
+      "type": "text/plain"
+    }
+  }
+}

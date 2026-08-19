@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "46elks Calls MMS API",
+    "version": "a1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "MMS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List sent and received MMS",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/mms"
+          },
+          "docs": "List sent and received MMS"
+        },
+        {
+          "info": {
+            "name": "Send an MMS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.46elks.com/a1/mms",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Send a picture message to a mobile phone."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single MMS",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/mms/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single MMS"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

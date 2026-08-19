@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "46elks Calls Media API",
+    "version": "a1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List call recordings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/recordings"
+          },
+          "docs": "List call recordings"
+        },
+        {
+          "info": {
+            "name": "List MMS images",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/images"
+          },
+          "docs": "List MMS images"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

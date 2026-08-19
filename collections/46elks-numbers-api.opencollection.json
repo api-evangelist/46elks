@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "46elks Calls Numbers API",
+    "version": "a1"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Numbers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List allocated phone numbers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.46elks.com/a1/numbers"
+          },
+          "docs": "List allocated phone numbers"
+        },
+        {
+          "info": {
+            "name": "Allocate a phone number",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.46elks.com/a1/numbers",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Allocate a phone number"
+        },
+        {
+          "info": {
+            "name": "Reconfigure a phone number",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.46elks.com/a1/numbers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Reconfigure a phone number"
+        },
+        {
+          "info": {
+            "name": "Deallocate a phone number",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.46elks.com/a1/numbers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deallocate a phone number"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

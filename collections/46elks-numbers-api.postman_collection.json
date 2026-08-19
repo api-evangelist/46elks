@@ -1,0 +1,507 @@
+{
+  "item": [
+    {
+      "id": "bc5f02a9-2456-42ab-ab88-302284620429",
+      "name": "Numbers",
+      "description": {
+        "content": "Allocate and manage virtual phone numbers.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a461d7d5-427f-4002-bf8d-771e506c925d",
+          "name": "Allocate a phone number",
+          "request": {
+            "name": "Allocate a phone number",
+            "description": {},
+            "url": {
+              "path": [
+                "numbers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "ISO country code for the number to allocate (e.g. se, gb, us)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sms_url",
+                  "value": "<uri>",
+                  "description": "Webhook URL for inbound SMS to this number."
+                },
+                {
+                  "disabled": false,
+                  "key": "voice_start",
+                  "value": "<uri>",
+                  "description": "Webhook URL for inbound calls to this number."
+                },
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6101bf1c-9c2e-4d4c-b324-e1d0fc377b98",
+              "name": "Number allocated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "numbers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "ISO country code for the number to allocate (e.g. se, gb, us).",
+                        "type": "text/plain"
+                      },
+                      "key": "country",
+                      "value": "se"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webhook URL for inbound SMS to this number.",
+                        "type": "text/plain"
+                      },
+                      "key": "sms_url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webhook URL for inbound calls to this number.",
+                        "type": "text/plain"
+                      },
+                      "key": "voice_start",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"nadaf5cd3c86dd7f0c805823647d15b1e\",\n  \"number\": \"+46766861004\",\n  \"country\": \"string\",\n  \"capabilities\": [\n    \"mms\",\n    \"voice\"\n  ],\n  \"active\": \"string\",\n  \"sms_url\": \"string\",\n  \"voice_start\": \"string\",\n  \"cost\": 1373\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "622a42cf-ff1a-467b-b587-16baefdfb4c0",
+          "name": "List allocated phone numbers",
+          "request": {
+            "name": "List allocated phone numbers",
+            "description": {},
+            "url": {
+              "path": [
+                "numbers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c11dc6ed-db68-4bee-91d4-cdf867d0f14c",
+              "name": "A list of number objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "numbers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"nadaf5cd3c86dd7f0c805823647d15b1e\",\n      \"number\": \"+46766861004\",\n      \"country\": \"string\",\n      \"capabilities\": [\n        \"mms\",\n        \"mms\"\n      ],\n      \"active\": \"string\",\n      \"sms_url\": \"string\",\n      \"voice_start\": \"string\",\n      \"cost\": 2512\n    },\n    {\n      \"id\": \"nadaf5cd3c86dd7f0c805823647d15b1e\",\n      \"number\": \"+46766861004\",\n      \"country\": \"string\",\n      \"capabilities\": [\n        \"sms\",\n        \"mms\"\n      ],\n      \"active\": \"string\",\n      \"sms_url\": \"string\",\n      \"voice_start\": \"string\",\n      \"cost\": 6747\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99ae86ba-39a9-49dc-9133-6c6ca6a1e2b4",
+          "name": "Reconfigure a phone number",
+          "request": {
+            "name": "Reconfigure a phone number",
+            "description": {},
+            "url": {
+              "path": [
+                "numbers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "ISO country code for the number to allocate (e.g. se, gb, us)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sms_url",
+                  "value": "<uri>",
+                  "description": "Webhook URL for inbound SMS to this number."
+                },
+                {
+                  "disabled": false,
+                  "key": "voice_start",
+                  "value": "<uri>",
+                  "description": "Webhook URL for inbound calls to this number."
+                },
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "751b635f-a976-4347-a3a9-bda7c99bbd33",
+              "name": "Number updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "numbers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "ISO country code for the number to allocate (e.g. se, gb, us).",
+                        "type": "text/plain"
+                      },
+                      "key": "country",
+                      "value": "se"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webhook URL for inbound SMS to this number.",
+                        "type": "text/plain"
+                      },
+                      "key": "sms_url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Webhook URL for inbound calls to this number.",
+                        "type": "text/plain"
+                      },
+                      "key": "voice_start",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "active",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"nadaf5cd3c86dd7f0c805823647d15b1e\",\n  \"number\": \"+46766861004\",\n  \"country\": \"string\",\n  \"capabilities\": [\n    \"voice\",\n    \"voice\"\n  ],\n  \"active\": \"string\",\n  \"sms_url\": \"string\",\n  \"voice_start\": \"string\",\n  \"cost\": 9595\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "076ccd4f-198b-442d-946a-d77527e2d505",
+          "name": "Deallocate a phone number",
+          "request": {
+            "name": "Deallocate a phone number",
+            "description": {},
+            "url": {
+              "path": [
+                "numbers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd11ae9f-b50b-4ebd-84fe-326ee5159ff4",
+              "name": "Number released.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "numbers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.46elks.com/a1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9091fe20-fd60-4fdf-9257-01c8cd25db89",
+    "name": "46elks Calls Numbers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A faithful, representative OpenAPI description of the 46elks CPaaS REST API. 46elks exposes a simple HTTP API for SMS, MMS, voice calls, phone number provisioning, and media. All requests use HTTP Basic authentication with an API username and API password issued in the 46elks dashboard. Request bodies are sent as application/x-www-form-urlencoded and responses are JSON.\n\nContact Support:\n Name: 46elks",
+      "type": "text/plain"
+    }
+  }
+}
