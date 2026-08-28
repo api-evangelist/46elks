@@ -7,6 +7,18 @@ description: 46elks is a Swedish communications platform as a service (CPaaS) of
   voice calls with programmable call actions, provisioning virtual phone numbers,
   and handling media and recordings. The API uses HTTP Basic authentication with an
   API username and password, and is billed pay-as-you-go.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
