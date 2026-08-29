@@ -1,0 +1,27 @@
+slug: 46elks
+provider: 46elks
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Telecommunications
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Numbers
+  spec_file: 46elks-numbers-api-openapi.yml
+  capability_id: BC-2640.30
+  capability_id_l1: BC-2640
+  capability_name: Numbering Resource Management
+  confidence: 0.7
+  evidence: POST /numbers allocateNumber Allocate a phone number ... DELETE /numbers/{id} deallocateNumber
+    Deallocate a phone number
+  reason: Operations allocate, list, reconfigure and deallocate telephone numbers — i.e. assignment and
+    stewardship of numbering resources to services, matching Numbering Resource Management. Confidence
+    held at 0.7 because the surface is a self-service provisioning API rather than full regulator-facing
+    number range stewardship.

@@ -187,6 +187,9 @@ apis:
   - type: Documentation
     url: https://46elks.com/kb/verify-phone-number
 common:
+- type: CapabilityMap
+  url: capabilities/46elks-capability-edges.yml
+  name: 46elks Business Capability Map
 - type: AgenticAccess
   url: agentic-access/46elks-agentic-access.yml
 - type: DomainSecurity
