@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: 46elks Calls SMS API
+  title: 46elks SMS API
   version: a1
   description: A faithful, representative OpenAPI description of the 46elks CPaaS REST API. 46elks exposes a simple HTTP API for SMS, MMS, voice calls, phone number provisioning, and media. All requests use HTTP Basic authentication with an API username and API password issued in the 46elks dashboard. Request bodies are sent as application/x-www-form-urlencoded and responses are JSON.
   contact:
@@ -87,46 +87,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/Sms'
 components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid API credentials.
   schemas:
-    SmsList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Sms'
-    Sms:
-      type: object
-      properties:
-        id:
-          type: string
-          example: s123abc456def
-        from:
-          type: string
-        to:
-          type: string
-        message:
-          type: string
-        status:
-          type: string
-          enum:
-          - created
-          - sent
-          - delivered
-          - failed
-        direction:
-          type: string
-          enum:
-          - outgoing
-          - incoming
-        cost:
-          type: integer
-          description: Cost in 10,000ths of the account currency.
-        parts:
-          type: integer
-        created:
-          type: string
-          format: date-time
     SmsRequest:
       type: object
       required:
@@ -164,9 +128,45 @@ components:
           enum:
           - message
           description: Do not store the message text in history.
-  responses:
-    Unauthorized:
-      description: Missing or invalid API credentials.
+    Sms:
+      type: object
+      properties:
+        id:
+          type: string
+          example: s123abc456def
+        from:
+          type: string
+        to:
+          type: string
+        message:
+          type: string
+        status:
+          type: string
+          enum:
+          - created
+          - sent
+          - delivered
+          - failed
+        direction:
+          type: string
+          enum:
+          - outgoing
+          - incoming
+        cost:
+          type: integer
+          description: Cost in 10,000ths of the account currency.
+        parts:
+          type: integer
+        created:
+          type: string
+          format: date-time
+    SmsList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sms'
   securitySchemes:
     basicAuth:
       type: http

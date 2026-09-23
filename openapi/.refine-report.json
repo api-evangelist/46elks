@@ -1,22 +1,28 @@
 {
   "provider": "46elks",
   "sources": [
-    "46elks-calls-api-openapi.yml",
-    "46elks-media-api-openapi.yml",
-    "46elks-mms-api-openapi.yml",
-    "46elks-numbers-api-openapi.yml",
-    "46elks-sms-api-openapi.yml"
+    "_original/46elks-openapi.yml"
   ],
   "outputs": [
     "46elks-calls-api-openapi.yml",
-    "46elks-media-api-openapi.yml",
     "46elks-mms-api-openapi.yml",
+    "46elks-media-api-openapi.yml",
     "46elks-numbers-api-openapi.yml",
     "46elks-sms-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "46elks-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "46elks-calls-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "46elks-media-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "46elks-mms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "46elks-numbers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "46elks-sms-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
