@@ -71,6 +71,31 @@ paths:
                 $ref: '#/components/schemas/Call'
 components:
   schemas:
+    CallAction:
+      type: object
+      description: A 46elks call action returned by voice_start or a webhook. Exactly one of connect, play, ivr, record, or hangup is typically present.
+      properties:
+        connect:
+          type: string
+          description: E.164 number or SIP address (sip:...) to connect the call to.
+        play:
+          type: string
+          format: uri
+          description: URL of an audio file to play to the caller.
+        ivr:
+          type: string
+          format: uri
+          description: Audio prompt for an interactive voice menu; digits post back.
+        next:
+          type: string
+          format: uri
+          description: URL to fetch the next action from.
+        record:
+          type: string
+          description: Enable recording of the caller's response.
+        hangup:
+          type: string
+          description: Terminate the call.
     CallRequest:
       type: object
       required:
@@ -118,31 +143,6 @@ components:
         created:
           type: string
           format: date-time
-    CallAction:
-      type: object
-      description: A 46elks call action returned by voice_start or a webhook. Exactly one of connect, play, ivr, record, or hangup is typically present.
-      properties:
-        connect:
-          type: string
-          description: E.164 number or SIP address (sip:...) to connect the call to.
-        play:
-          type: string
-          format: uri
-          description: URL of an audio file to play to the caller.
-        ivr:
-          type: string
-          format: uri
-          description: Audio prompt for an interactive voice menu; digits post back.
-        next:
-          type: string
-          format: uri
-          description: URL to fetch the next action from.
-        record:
-          type: string
-          description: Enable recording of the caller's response.
-        hangup:
-          type: string
-          description: Terminate the call.
     CallList:
       type: object
       properties:

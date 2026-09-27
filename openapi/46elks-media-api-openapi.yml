@@ -56,6 +56,19 @@ paths:
                       $ref: '#/components/schemas/Image'
 components:
   schemas:
+    Image:
+      type: object
+      properties:
+        id:
+          type: string
+        mmsid:
+          type: string
+        created:
+          type: string
+          format: date-time
+        url:
+          type: string
+          format: uri
     Recording:
       type: object
       properties:
@@ -70,19 +83,6 @@ components:
           type: string
           format: uri
         mp3:
-          type: string
-          format: uri
-    Image:
-      type: object
-      properties:
-        id:
-          type: string
-        mmsid:
-          type: string
-        created:
-          type: string
-          format: date-time
-        url:
           type: string
           format: uri
   securitySchemes:
