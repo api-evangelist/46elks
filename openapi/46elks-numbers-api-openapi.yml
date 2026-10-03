@@ -90,6 +90,33 @@ paths:
           description: Number released.
 components:
   schemas:
+    NumberList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Number'
+    NumberRequest:
+      type: object
+      properties:
+        country:
+          type: string
+          description: ISO country code for the number to allocate (e.g. se, gb, us).
+          example: se
+        sms_url:
+          type: string
+          format: uri
+          description: Webhook URL for inbound SMS to this number.
+        voice_start:
+          type: string
+          format: uri
+          description: Webhook URL for inbound calls to this number.
+        active:
+          type: string
+          enum:
+          - 'yes'
+          - 'no'
     Number:
       type: object
       properties:
@@ -117,33 +144,6 @@ components:
           type: string
         cost:
           type: integer
-    NumberRequest:
-      type: object
-      properties:
-        country:
-          type: string
-          description: ISO country code for the number to allocate (e.g. se, gb, us).
-          example: se
-        sms_url:
-          type: string
-          format: uri
-          description: Webhook URL for inbound SMS to this number.
-        voice_start:
-          type: string
-          format: uri
-          description: Webhook URL for inbound calls to this number.
-        active:
-          type: string
-          enum:
-          - 'yes'
-          - 'no'
-    NumberList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Number'
   securitySchemes:
     basicAuth:
       type: http

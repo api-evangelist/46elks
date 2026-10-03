@@ -71,6 +71,13 @@ paths:
                 $ref: '#/components/schemas/Call'
 components:
   schemas:
+    CallList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Call'
     CallAction:
       type: object
       description: A 46elks call action returned by voice_start or a webhook. Exactly one of connect, play, ivr, record, or hangup is typically present.
@@ -96,6 +103,27 @@ components:
         hangup:
           type: string
           description: Terminate the call.
+    Call:
+      type: object
+      properties:
+        id:
+          type: string
+        from:
+          type: string
+        to:
+          type: string
+        state:
+          type: string
+          enum:
+          - ongoing
+          - success
+          - busy
+          - failed
+        direction:
+          type: string
+        created:
+          type: string
+          format: date-time
     CallRequest:
       type: object
       required:
@@ -122,34 +150,6 @@ components:
         timeout:
           type: integer
           description: Seconds to wait before abandoning an unanswered call.
-    Call:
-      type: object
-      properties:
-        id:
-          type: string
-        from:
-          type: string
-        to:
-          type: string
-        state:
-          type: string
-          enum:
-          - ongoing
-          - success
-          - busy
-          - failed
-        direction:
-          type: string
-        created:
-          type: string
-          format: date-time
-    CallList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Call'
   securitySchemes:
     basicAuth:
       type: http
