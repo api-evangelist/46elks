@@ -71,13 +71,6 @@ paths:
                 $ref: '#/components/schemas/Call'
 components:
   schemas:
-    CallList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Call'
     CallAction:
       type: object
       description: A 46elks call action returned by voice_start or a webhook. Exactly one of connect, play, ivr, record, or hangup is typically present.
@@ -103,6 +96,13 @@ components:
         hangup:
           type: string
           description: Terminate the call.
+    CallList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Call'
     Call:
       type: object
       properties:

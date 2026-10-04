@@ -88,6 +88,38 @@ paths:
                 $ref: '#/components/schemas/Sms'
 components:
   schemas:
+    Sms:
+      type: object
+      properties:
+        id:
+          type: string
+          example: s123abc456def
+        from:
+          type: string
+        to:
+          type: string
+        message:
+          type: string
+        status:
+          type: string
+          enum:
+          - created
+          - sent
+          - delivered
+          - failed
+        direction:
+          type: string
+          enum:
+          - outgoing
+          - incoming
+        cost:
+          type: integer
+          description: Cost in 10,000ths of the account currency.
+        parts:
+          type: integer
+        created:
+          type: string
+          format: date-time
     SmsList:
       type: object
       properties:
@@ -132,38 +164,6 @@ components:
           enum:
           - message
           description: Do not store the message text in history.
-    Sms:
-      type: object
-      properties:
-        id:
-          type: string
-          example: s123abc456def
-        from:
-          type: string
-        to:
-          type: string
-        message:
-          type: string
-        status:
-          type: string
-          enum:
-          - created
-          - sent
-          - delivered
-          - failed
-        direction:
-          type: string
-          enum:
-          - outgoing
-          - incoming
-        cost:
-          type: integer
-          description: Cost in 10,000ths of the account currency.
-        parts:
-          type: integer
-        created:
-          type: string
-          format: date-time
   responses:
     Unauthorized:
       description: Missing or invalid API credentials.

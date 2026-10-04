@@ -90,13 +90,6 @@ paths:
           description: Number released.
 components:
   schemas:
-    NumberList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Number'
     NumberRequest:
       type: object
       properties:
@@ -144,6 +137,13 @@ components:
           type: string
         cost:
           type: integer
+    NumberList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Number'
   securitySchemes:
     basicAuth:
       type: http
