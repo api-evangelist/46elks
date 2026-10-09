@@ -157,3 +157,32 @@ plans:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  - subscription
+  units:
+  - compute
+  - message
+  - object
+  plans:
+  - name: Pay-as-you-go
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - compute
+    - message
+    periods:
+    - month
+  - name: Virtual Phone Numbers
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - object
+    - other
+    periods:
+    - month
