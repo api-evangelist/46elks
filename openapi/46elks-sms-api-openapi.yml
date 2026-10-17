@@ -88,6 +88,43 @@ paths:
                 $ref: '#/components/schemas/Sms'
 components:
   schemas:
+    SmsRequest:
+      type: object
+      required:
+      - from
+      - to
+      - message
+      properties:
+        from:
+          type: string
+          description: Alphanumeric sender ID (max 11 chars) or E.164 number.
+          example: Elks
+        to:
+          type: string
+          description: Recipient number in E.164 format.
+          example: '+46700000000'
+        message:
+          type: string
+          example: Hello from 46elks!
+        dryrun:
+          type: string
+          enum:
+          - 'yes'
+          description: Validate without sending.
+        flashsms:
+          type: string
+          enum:
+          - 'yes'
+          description: Send as a flash SMS shown immediately, not stored.
+        whendelivered:
+          type: string
+          format: uri
+          description: Webhook URL notified with the delivery status.
+        dontlog:
+          type: string
+          enum:
+          - message
+          description: Do not store the message text in history.
     Sms:
       type: object
       properties:
@@ -127,43 +164,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Sms'
-    SmsRequest:
-      type: object
-      required:
-      - from
-      - to
-      - message
-      properties:
-        from:
-          type: string
-          description: Alphanumeric sender ID (max 11 chars) or E.164 number.
-          example: Elks
-        to:
-          type: string
-          description: Recipient number in E.164 format.
-          example: '+46700000000'
-        message:
-          type: string
-          example: Hello from 46elks!
-        dryrun:
-          type: string
-          enum:
-          - 'yes'
-          description: Validate without sending.
-        flashsms:
-          type: string
-          enum:
-          - 'yes'
-          description: Send as a flash SMS shown immediately, not stored.
-        whendelivered:
-          type: string
-          format: uri
-          description: Webhook URL notified with the delivery status.
-        dontlog:
-          type: string
-          enum:
-          - message
-          description: Do not store the message text in history.
   responses:
     Unauthorized:
       description: Missing or invalid API credentials.
