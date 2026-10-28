@@ -1,4 +1,4 @@
-# 46elks (46elks)
+# 46elks
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,162 +66,124 @@
 
 46elks is a Swedish communications platform as a service (CPaaS) offering a simple HTTP REST API for sending and receiving SMS and MMS, making and receiving voice calls with programmable call actions, provisioning virtual phone numbers, and handling media and recordings. The API uses HTTP Basic authentication with an API username and password, and is billed pay-as-you-go.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/46elks/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/46elks/refs/heads/main/apis.yml)
+**Areas:** CPaaS · SMS · MMS · Voice · Messaging · Phone Numbers · Communications · Sweden
 
-## Tags
+## 46elks on APIs.io
 
-- CPaaS
-- SMS
-- MMS
-- Voice
-- Messaging
-- Phone Numbers
-- Communications
+Everything profiled for 46elks is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/46elks/](https://apis.io/providers/46elks/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (5)
 
-- **Created:** 2026-07-01
-- **Modified:** 2026-07-01
+- [46elks Calls API](https://apis.io/apis/46elks/46elks-calls-api/) — Make and receive programmable voice calls.
+- [46elks Media API](https://apis.io/apis/46elks/46elks-media-api/) — Access recordings and MMS images.
+- [46elks MMS API](https://apis.io/apis/46elks/46elks-mms-api/) — Send and receive picture messages.
+- [46elks Numbers API](https://apis.io/apis/46elks/46elks-numbers-api/) — Allocate and manage virtual phone numbers.
+- [46elks SMS API](https://apis.io/apis/46elks/46elks-sms-api/) — Send and receive text messages.
 
-## APIs
+### Published properties
 
-### 46elks SMS API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Send and receive text messages worldwide. POST to /sms with from, to, and message, with support for delivery reports (whendelivered webhook), dry runs, flash SMS, and alphanumeric sender IDs. GET /sms and /sms/{id} retrieve message history.
+#### Agentic access (1)
 
-- **Human URL:** [https://46elks.com/docs/send-sms](https://46elks.com/docs/send-sms)
-- **Base URL:** `https://api.46elks.com/a1`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [46Elks Agentic Access](https://apis.io/agentic-access/46elks/46elks-agentic-access/)
 
-- SMS
-- Messaging
-- Text
+#### Collections (6)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://46elks.com/docs/send-sms)
-- [API Reference](https://46elks.com/docs)
-- [OpenAPI](openapi/46elks-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/46elks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/46elks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [46elks API](https://apis.io/collections/46elks/open-46elks/)
+- [46elks Calls API](https://apis.io/collections/46elks/open-46elks-calls-api/)
+- [46elks Calls Media API](https://apis.io/collections/46elks/open-46elks-media-api/)
+- [46elks Calls MMS API](https://apis.io/collections/46elks/open-46elks-mms-api/)
+- [46elks Calls Numbers API](https://apis.io/collections/46elks/open-46elks-numbers-api/)
+- [46elks Calls SMS API](https://apis.io/collections/46elks/open-46elks-sms-api/)
 
-### 46elks MMS API
+#### Security (2)
 
-Send picture messages (MMS) to mobile phones. POST to /mms with from, to, message, and image data, and GET /mms and /mms/{id} to retrieve MMS history.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://46elks.com/docs/send-mms](https://46elks.com/docs/send-mms)
-- **Base URL:** `https://api.46elks.com/a1`
+- [46Elks Authentication](https://apis.io/security/46elks/46elks-authentication/)
+- [46Elks Domain Security](https://apis.io/security/46elks/46elks-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- MMS
-- Messaging
-- Media
+Published plans, tiers and prices.
 
-#### Properties
+- [46Elks Plans Pricing](https://apis.io/plans/46elks/46elks-plans-pricing/)
 
-- [Documentation](https://46elks.com/docs/send-mms)
-- [API Reference](https://46elks.com/docs)
-- [OpenAPI](openapi/46elks-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/46elks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/46elks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### 46elks Voice Calls API
+Published request limits.
 
-Make and receive programmable voice calls. POST to /calls with from, to, and voice_start driving JSON call actions (connect, play, ivr, record, hangup) delivered via webhook, plus whenhangup callbacks. GET /calls and /calls/{id} retrieve call history.
+- [46Elks Rate Limits](https://apis.io/rate-limits/46elks/46elks-rate-limits/)
 
-- **Human URL:** [https://46elks.com/docs/make-call](https://46elks.com/docs/make-call)
-- **Base URL:** `https://api.46elks.com/a1`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Voice
-- Calls
-- IVR
+- [46Elks Finops](https://apis.io/finops/46elks/46elks-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://46elks.com/docs/make-call)
-- [API Reference](https://46elks.com/docs)
-- [OpenAPI](openapi/46elks-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/46elks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/46elks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### 46elks Phone Numbers API
-
-Allocate, configure, and deallocate virtual phone numbers. POST to /numbers to rent a number and set sms_url / voice_start handlers, GET /numbers to list, and POST or DELETE /numbers/{id} to reconfigure or release a number.
-
-- **Human URL:** [https://46elks.com/docs/allocate-phone-number](https://46elks.com/docs/allocate-phone-number)
-- **Base URL:** `https://api.46elks.com/a1`
-
-#### Tags
-
-- Phone Numbers
-- Provisioning
-- Virtual Numbers
-
-#### Properties
-
-- [Documentation](https://46elks.com/docs/allocate-phone-number)
-- [API Reference](https://46elks.com/docs)
-- [OpenAPI](openapi/46elks-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/46elks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/46elks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### 46elks Media API
-
-Access media generated by the platform - GET /recordings for call recordings and GET /images for MMS image history - for archiving, transcription, and playback workflows.
-
-- **Human URL:** [https://46elks.com/docs/recordings](https://46elks.com/docs/recordings)
-- **Base URL:** `https://api.46elks.com/a1`
-
-#### Tags
-
-- Media
-- Recordings
-- Images
-
-#### Properties
-
-- [Documentation](https://46elks.com/docs/recordings)
-- [API Reference](https://46elks.com/docs)
-- [OpenAPI](openapi/46elks-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/46elks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/46elks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### 46elks Verification API
-
-Phone number verification and one-time passcodes (OTP / 2FA) built on the SMS and voice call primitives - generate a code, deliver it via POST /sms or a spoken IVR POST /calls, and confirm the user-entered value in your application.
-
-- **Human URL:** [https://46elks.com/kb/verify-phone-number](https://46elks.com/kb/verify-phone-number)
-- **Base URL:** `https://api.46elks.com/a1`
-
-#### Tags
-
-- Verification
-- OTP
-- Two-Factor
-
-#### Properties
-
-- [Documentation](https://46elks.com/kb/verify-phone-number)
-- [API Reference](https://46elks.com/docs)
-- [OpenAPI](openapi/46elks-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/46elks.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/46elks.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/46elks)
-- [LinkedIn](https://www.linkedin.com/company/46elks)
 - [Website](https://46elks.com/)
 - [Documentation](https://46elks.com/docs)
-- [Plans](plans/46elks-plans-pricing.yml)
-- [Rate Limits](rate-limits/46elks-rate-limits.yml)
-- [Fin Ops](finops/46elks-finops.yml)
+- [Blog](https://46elks.com/blog)
+- [GitHub](https://github.com/46elks)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 24.9** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 46.7 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 5.3 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.0** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/46elks/](https://apis.io/providers/46elks/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for 46elks: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/46elks/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
